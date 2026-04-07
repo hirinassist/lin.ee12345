@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Redirecting...</title>
+    <meta charset="UTF-8">
+    <title>正在跳轉...</title>
 </head>
 <body>
-<script>
-  const links = [
-    "https://line.me/R/ti/p/@398jahly",
-    "https://line.me/R/ti/p/@989dyyea",
-    "https://line.me/R/ti/p/@531lahau",
-    "https://line.me/R/ti/p/@885lkmoh",
-    "https://line.me/R/ti/p/@929byfyr"
-  ];
+    <p>正在為您導向至 LINE，請稍候...</p>
 
-  const params = new URLSearchParams(window.location.search);
-  const n = parseInt(params.get("n"));
+    <script>
+        // 定義你的 LINE 連結清單
+        const links = [
+            "https://line.me/R/ti/p/@398jahly",
+            "https://line.me/R/ti/p/@989dyyea",
+            "https://line.me/R/ti/p/@531lahau",
+            "https://line.me/R/ti/p/@885lkmoh",
+            "https://line.me/R/ti/p/@929byfyr"
+        ];
 
-  if (!isNaN(n) && n >= 1 && n <= links.length) {
-    window.location.replace(links[n - 1]);
-  } else {
-    window.location.replace(links[0]);
-  }
-</script>
+        // 取得上一次跳轉的索引 (儲存在瀏覽器本地)
+        let currentIndex = localStorage.getItem('last_line_index');
+
+        // 如果是第一次訪問，或索引超出範圍，則從 0 開始
+        if (currentIndex === null || currentIndex >= links.length - 1) {
+            currentIndex = 0;
+        } else {
+            currentIndex = parseInt(currentIndex) + 1;
+        }
+
+        // 儲存本次跳轉的索引，供下次使用
+        localStorage.setItem('last_line_index', currentIndex);
+
+        // 執行跳轉
+        window.location.replace(links[currentIndex]);
+    </script>
 </body>
 </html>
