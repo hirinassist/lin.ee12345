@@ -1,21 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>正在跳轉...</title>
-    <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f4f4f4; }
-        .loader { border: 4px solid #f3f3f3; border-top: 4px solid #00B900; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    </style>
+    <title>正在導向 LINE...</title>
 </head>
 <body>
-    <div class="loader"></div>
-
     <script>
-        // 你的 LINE 連結清單
-        const lineLinks = [
+        // 你的 5 個 LINE 連結
+        const links = [
             "https://line.me/R/ti/p/@398jahly",
             "https://line.me/R/ti/p/@989dyyea",
             "https://line.me/R/ti/p/@531lahau",
@@ -23,32 +15,11 @@
             "https://line.me/R/ti/p/@929byfyr"
         ];
 
-        function doRedirect() {
-            // 讀取目前的索引值（如果沒有則從 0 開始）
-            let lastIndex = parseInt(localStorage.getItem('line_ptr'));
-            
-            // 判斷是否為首次進入或資料錯誤
-            if (isNaN(lastIndex) || lastIndex < 0 || lastIndex >= lineLinks.length) {
-                lastIndex = 0;
-            } else {
-                // 如果不是第一次，就跳到下一個
-                lastIndex = (lastIndex + 1) % lineLinks.length;
-            }
+        // 隨機從裡面挑一個
+        const randomLink = links[Math.floor(Math.random() * links.length)];
 
-            // 存入新的索引值
-            localStorage.setItem('line_ptr', lastIndex);
-
-            // 執行跳轉
-            const target = lineLinks[lastIndex];
-            
-            // 延遲極短時間確保儲存成功，然後跳轉
-            setTimeout(function() {
-                window.location.replace(target);
-            }, 100);
-        }
-
-        // 頁面載入後立即執行
-        window.onload = doRedirect;
+        // 直接跳轉
+        window.location.replace(randomLink);
     </script>
 </body>
 </html>
