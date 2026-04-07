@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting...</title>
+</head>
+<body>
+<script>
+  const links = [
+    "https://line.me/R/ti/p/@398jahly",
+    "https://line.me/R/ti/p/@989dyyea",
+    "https://line.me/R/ti/p/@531lahau",
+    "https://line.me/R/ti/p/@885lkmoh",
+    "https://line.me/R/ti/p/@929byfyr"
+  ];
+
+  const params = new URLSearchParams(window.location.search);
+  const n = parseInt(params.get("n"));
+
+  if (!isNaN(n) && n >= 1 && n <= links.length) {
+    window.location.replace(links[n - 1]);
+  } else {
+    window.location.replace(links[0]);
+  }
+</script>
+</body>
+</html>
