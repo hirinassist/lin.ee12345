@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>正在導向 LINE...</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LINE</title>
+<script>
+var LINKS = [
+  'https://line.me/R/ti/p/@398jahly',
+  'https://line.me/R/ti/p/@989dyyea',
+  'https://line.me/R/ti/p/@531lahau',
+  'https://line.me/R/ti/p/@885lkmoh',
+  'https://line.me/R/ti/p/@929byfyr'
+];
+
+var KEY = 'line_idx';
+var idx = parseInt(localStorage.getItem(KEY) || '0', 10);
+localStorage.setItem(KEY, (idx + 1) % LINKS.length);
+window.location.replace(LINKS[idx]);
+</script>
 </head>
-<body>
-    <script>
-        // 你的 5 個 LINE 連結
-        const links = [
-            "https://line.me/R/ti/p/@398jahly",
-            "https://line.me/R/ti/p/@989dyyea",
-            "https://line.me/R/ti/p/@531lahau",
-            "https://line.me/R/ti/p/@885lkmoh",
-            "https://line.me/R/ti/p/@929byfyr"
-        ];
-
-        // 隨機從裡面挑一個
-        const randomLink = links[Math.floor(Math.random() * links.length)];
-
-        // 直接跳轉
-        window.location.replace(randomLink);
-    </script>
-</body>
+<body></body>
 </html>
